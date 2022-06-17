@@ -2,6 +2,15 @@ from django.contrib import admin
 from account.models import Account,Profile
 # Register your models here.
 
+class Accountadmin(admin.ModelAdmin):
+	list_display = ('email' , 'username' ,'password',)
 
-admin.site.register(Account)
-admin.site.register(Profile)
+class Profileadmin(admin.ModelAdmin):
+	list_display = ('user' ,'image',)
+
+
+
+# admin.site.register(C)
+
+admin.site.register(Account,Accountadmin)
+admin.site.register(Profile,Profileadmin)

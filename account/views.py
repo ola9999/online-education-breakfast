@@ -25,7 +25,7 @@ def registration_view(request):
 
 	if request.method == 'POST':
 		request_data =JSONParser().parse(request)
-		serializer = RegistrationSerializer(data=request.data)
+		serializer = RegistrationSerializer(data=request_data)
 
 		if serializer.is_valid():
 			account = serializer.save()
@@ -162,9 +162,9 @@ def update_password_view(request,id):
 			pass_word = Account.objects.get(id=id)
 
 			# old_name = user.username
-			user.password=  new_pass
+			pass_word.password=  new_pass
 
-			user.save()
+			pass_word.save()
 
 			return JsonResponse({"response":"password successfully updated"})
 

@@ -23,7 +23,15 @@ from account.views import (registration_view,
                            update_profile_view)
 
 
-from education .views import subject_view,lecture_view,reference_view ,course_view
+from education .views import (subject_view,
+                              lecture_view,
+                              reference_view,
+                              course_view,
+                              addto_favourite_lecture_view,
+                              get_favourite_lecture_view,
+                              addto_favourite_course_view,
+                              get_favourite_course_view)
+
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -40,17 +48,25 @@ urlpatterns = [
 
 
 
-#pk=year
-    path('subjects/<int:pk>/', subject_view, name='subject_view'),
+#id=year
+    path('subjects/<int:id>/', subject_view, name='subject_view'),
 
-# pk=subject_id
-    path('lectures/<int:pk>/', lecture_view, name='lecture_view'),
-    path('references/<int:pk>/', reference_view, name='reference_view'),
-    path('course/<int:pk>/', course_view, name='course_view'),
+# id=subject_id
+    path('lectures/<int:id>/', lecture_view, name='lecture_view'),
+    path('references/<int:id>/', reference_view, name='reference_view'),
+    path('course/<int:id>/', course_view, name='course_view'),
+
+    path('course/<int:id>/', course_view, name='course_view'),
+##
+    path('addtofavourite_lecture/<int:id>/', addto_favourite_lecture_view, name='addto_favourite_lecture_view'),
+    path('get_favourite_lecture/', get_favourite_lecture_view, name='get_favourite_lecture_view'),
+##
+    path('addto_favourite_course/<int:id>/', addto_favourite_course_view, name='addto_favourite_course_view'),
+    path('get_favourite_course/', get_favourite_course_view, name='get_favourite_course_view'),
 
 
     path('admin/', admin.site.urls),
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# if settings.DEBUG:
+#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

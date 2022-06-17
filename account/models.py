@@ -14,8 +14,11 @@ class Account(models.Model):
 
 #	profile_image 			= models.ImageField(max_Length= 255 , upload_to= get_profile_image_filepath , null = True ,blank= True, default =get_default_profile_image )
 
-	#def __str__(self):
-	#	return ['id','email', 'username', 'password' ,]
+	# def __str__(self):
+	# 	return ['id','email', 'username', 'password' ,]
+	# def __str__(self):
+	#         return self.subject_name
+	
 
 class Profile(models.Model):
 #	account = models.ForeignKey(Account, on_delete=models.CASCADE)
